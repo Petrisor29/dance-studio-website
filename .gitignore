@@ -1,0 +1,19 @@
+# Fisiere generate de sistemul de operare
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Setari specifice editorului VS Code
+.vscode/
+
+# Log-uri de eroare
+*.log
+
+# Pregatire pentru viitor (Backend PHP)
+# Vom decomenta (scoate #) cand vom avea un fisier cu parola bazei de date
+# config/database.php
+# .env
