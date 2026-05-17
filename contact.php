@@ -11,12 +11,12 @@
         <h1>Scoala de Dans "Ritm si Pasiune"</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="cursuri.html">Cursuri</a></li>
-                <li><a href="instructori.html">Instructorii</a></li>
-                <li><a href="evenimente.html">Evenimente</a></li>
-                <li><a href="galerie.html">Galerie</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="cursuri.php">Cursuri</a></li>
+                <li><a href="instructori.php">Instructorii</a></li>
+                <li><a href="evenimente.php">Evenimente</a></li>
+                <li><a href="galerie.php">Galerie</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
     </header>
