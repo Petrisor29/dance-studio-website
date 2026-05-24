@@ -1,8 +1,8 @@
 <?php
-// 1. Conexiunea la baza de date (fundatia)
+// 1. Conexiunea la baza de date (fundația)
 require_once 'db_connect.php';
 
-// 2. Incarcam partea de sus si meniul de navigare
+// 2. Încărcăm eticheta de sus și meniul de navigare
 include 'header.php';
 ?>
 
@@ -16,7 +16,7 @@ include 'header.php';
         $sql = "SELECT nume, specializare, descriere FROM instructori ORDER BY id DESC";
         $result = mysqli_query($conn, $sql);
 
-        // 4. Afisam dinamic rezultatele
+        // 4. Afișăm dinamic rezultatele
         if ($result && mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 echo "<div>";
@@ -27,8 +27,7 @@ include 'header.php';
                 echo "<hr>";
             }
         } else {
-            // Mesaj afisat cand nu exista date inca in baza de date
-            echo "<p style='color: #666; font-style: italic;'>Momentan construim echipa. Va rugam sa reveniti curand!</p>";
+            echo "<p style='color: #666; font-style: italic;'>Momentan construim echipa. Vă rugăm să reveniți curând!</p>";
         }
         ?>
 
@@ -36,6 +35,6 @@ include 'header.php';
 </main>
 
 <?php
-// 5. Incarcam subsolul paginii si inchidem tag-urile HTML
+// 5. Încărcăm subsolul paginii și închidem tag-urile HTML
 include 'footer.php';
 ?>

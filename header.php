@@ -14,7 +14,7 @@
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="cursuri.php">Cursuri</a></li>
-                <li><a href="instructori.php">Instructorii</a></li>
+                <li><a href="instructori.php">Instructori</a></li>
                 <li><a href="evenimente.php">Evenimente</a></li>
                 <li><a href="galerie.php">Galerie</a></li>
                 <li><a href="contact.php">Contact</a></li>

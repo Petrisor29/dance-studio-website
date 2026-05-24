@@ -1,72 +1,68 @@
 <?php
 session_start();
+require_once 'core/Database.php';
 
-// Protectia panoului de administrare
+// 1. Verificam autentificarea (Partea de login/protectie)
 if (!isset($_SESSION['admin_logat']) || $_SESSION['admin_logat'] !== true) {
     header("Location: login.php");
     exit;
 }
 
-require 'db_connect.php';
-?>
+// 2. Initializam baza de date
+$db = (new Database())->getConnection();
 
+// 3. Dirijam cererea (Router)
+$sectiune = isset($_GET['sectiune']) ? $_GET['sectiune'] : 'dashboard';
+
+// Includem controllerele necesare
+require_once 'controllers/InstructorController.php';
+require_once 'controllers/CursController.php';
+require_once 'controllers/EvenimentController.php';
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Panou Administrare</title>
+    <title>Panou Administrare - Școala de Dans</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <script src="assets/js/admin.js"></script>
-
-    <style>
-        .admin-container { max-width: 1000px; margin: 40px auto; padding: 20px; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .admin-nav { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
-        .admin-nav a { margin-right: 15px; text-decoration: none; color: #2c3e50; font-weight: bold; }
-        .admin-nav a:hover { color: #e74c3c; }
-        .btn-logout { float: right; background-color: #333; color: white; padding: 5px 10px; border-radius: 4px; text-decoration: none;}
-        .btn-logout:hover { background-color: #000; }
-        .form-box { background: #f9f9f9; padding: 15px; border: 1px solid #ccc; margin-bottom: 20px; border-radius: 5px;}
-        .admin-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        .admin-table th, .admin-table td { padding: 10px; border: 1px solid #ddd; text-align: left; }
-        .admin-table th { background: #2c3e50; color: white; }
-        .btn-edit { color: #3498db; text-decoration: none; font-weight: bold; margin-right: 10px; }
-        .btn-delete { background: none; border: none; color: #e74c3c; font-weight: bold; cursor: pointer; padding: 0; font-family: inherit; font-size: inherit; }
-    </style>
 </head>
 <body>
 
-    <div class="admin-container">
-        <a href="logout.php" class="btn-logout">Delogare</a>
-        <h2>Bun venit, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+    <div class="sidebar" style="width: 250px; height: 100vh; background: #2c3e50; position: fixed; left: 0; top: 0; padding-top: 20px;">
+        <h2 style="color: white; text-align: center; margin-bottom: 30px;">Admin Panel</h2>
+        <a href="admin.php?sectiune=dashboard" style="display: block; color: white; padding: 15px 20px; text-decoration: none; border-bottom: 1px solid #34495e;">Dashboard</a>
+        <a href="admin.php?sectiune=instructori" style="display: block; color: white; padding: 15px 20px; text-decoration: none; border-bottom: 1px solid #34495e; <?php if($sectiune=='instructori') echo 'background: #34495e;'; ?>">Gestionare Instructori</a>
+        <a href="admin.php?sectiune=cursuri" style="display: block; color: white; padding: 15px 20px; text-decoration: none; border-bottom: 1px solid #34495e; <?php if($sectiune=='cursuri') echo 'background: #34495e;'; ?>">Gestionare Cursuri</a>
+        <a href="admin.php?sectiune=evenimente" style="display: block; color: white; padding: 15px 20px; text-decoration: none; border-bottom: 1px solid #34495e; <?php if($sectiune=='evenimente') echo 'background: #34495e;'; ?>">Calendar Evenimente</a>
+        <a href="index.php" target="_blank" style="display: block; color: #3498db; padding: 15px 20px; text-decoration: none; margin-top: 20px;">🌐 Vezi Site-ul Public</a>
+    </div>
+
+    <div class="main-content" style="margin-left: 250px; padding: 20px;">
         
-        <div class="admin-nav">
-            <a href="admin.php?sectiune=instructori">Gestionare Instructori</a>
-            <a href="admin.php?sectiune=cursuri">Gestionare Cursuri</a>
-            <a href="admin.php?sectiune=evenimente">Gestionare Evenimente</a>
-            <a href="index.php" target="_blank">Vezi Site-ul Public</a>
+        <div class="admin-header" style="display: flex; justify-content: space-between; align-items: center; background: #ecf0f1; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px;">
+            <h3 style="margin: 0;">Bun venit, Administrator!</h3>
+            <a href="logout.php" style="background: #e74c3c; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; font-weight: bold;">Deconectare</a>
         </div>
 
-        <div class="admin-content">
+        <div class="admin-body">
             <?php
-            // SISTEMUL DE RUTARE (ROUTER)
-            // SISTEMUL DE RUTARE (ROUTER)
-            $sectiune = isset($_GET['sectiune']) ? $_GET['sectiune'] : 'dashboard';
-
-            // Verificam ce buton s-a apasat in meniu si incarcam modulul corespunzator
             switch ($sectiune) {
                 case 'instructori':
-                    include 'admin_modules/instructori.php';
+                    $ctrl = new InstructorController($db);
+                    $ctrl->index();
                     break;
                 case 'cursuri':
-                    include 'admin_modules/cursuri.php'; // Am activat includerea!
+                    $ctrl = new CursController($db);
+                    $ctrl->index();
                     break;
                 case 'evenimente':
-                    include 'admin_modules/evenimente.php';
+                    $ctrl = new EvenimentController($db);
+                    $ctrl->index();
                     break;
                 case 'dashboard':
                 default:
-                    echo "<h3>Alege o sectiune din meniul de mai sus pentru a incepe.</h3>";
+                    echo "<h3>Alege o secțiune din meniul din stânga pentru a începe.</h3>";
                     break;
             }
             ?>
