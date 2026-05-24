@@ -3,13 +3,6 @@
 session_start();
 require 'db_connect.php';
 
-// --- BLOCK TEMPORAR PENTRU SETAREA PAROLEI ---
-// Deoarece in scriptul SQL anterior am pus un hash fals, generam acum unul real, criptografic.
-// Algoritmul BCRYPT este standardul actual in industrie pentru protejarea parolelor.
-$hash_corect = password_hash("admin123", PASSWORD_DEFAULT);
-$conn->query("UPDATE utilizatori SET password = '$hash_corect' WHERE username = 'admin'");
-// ---------------------------------------------
-
 $eroare = "";
 
 // Verificam daca formularul a fost trimis
@@ -31,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['admin_logat'] = true;
             $_SESSION['username'] = $user;
             
-            // Redirectionam catre panoul de control (pe care il vom crea imediat)
+            // Redirectionam catre panoul de control
             header("Location: admin.php");
             exit;
         } else {
@@ -45,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login Administrator</title>
