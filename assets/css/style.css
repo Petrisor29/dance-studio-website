@@ -111,3 +111,26 @@ footer {
     color: white;
     margin-top: 40px;
 }
+
+/* --- STILURI PENTRU GALERIA FOTO --- */
+.galerie-grid {
+    display: grid;
+    /* Creeaza coloane automate; pe ecrane mici pozele vor sta automat unele sub altele */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; /* Spatiul dintre poze */
+    margin-top: 30px;
+}
+
+.galerie-grid img {
+    width: 100%; /* Poza se intinde doar cat ii permite celula din grila */
+    height: 250px; /* Fortam toate pozele sa aiba aceeasi inaltime */
+    object-fit: cover; /* Taie automat pozele ca sa incapa perfect, fara sa le turteasca */
+    border-radius: 8px; /* Colturi usor rotunjite */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* O umbra fina de adancime */
+    transition: transform 0.3s ease; /* Pregatim o animatie lina */
+}
+
+/* Efect de marire cand treci cu mouse-ul peste o poza */
+.galerie-grid img:hover {
+    transform: scale(1.05);
+}

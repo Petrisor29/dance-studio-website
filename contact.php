@@ -1,65 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scoala de Dans | Contact</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Scoala de Dans "Ritm si Pasiune"</h1>
-        <nav>
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="cursuri.php">Cursuri</a></li>
-                <li><a href="instructori.php">Instructorii</a></li>
-                <li><a href="evenimente.php">Evenimente</a></li>
-                <li><a href="galerie.php">Galerie</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<?php
+// Incarcam antetul modular
+include 'header.php';
+?>
 
-    <main>
-        <section>
-            <h2>Contacteaza-ne</h2>
-            <p>Ai o intrebare sau vrei sa te inscrii la un curs? Lasa-ne un mesaj si te vom contacta in cel mai scurt timp.</p>
+<main>
+    <section>
+        <h2>Contacteaza-ne</h2>
+        <p>Ai o intrebare sau vrei sa te inscrii la un curs? Lasa-ne un mesaj si te vom contacta in cel mai scurt timp.</p>
 
-            <form action="#" method="POST">
-                <div>
-                    <label for="nume">Numele tau:</label><br>
-                    <input type="text" id="nume" name="nume" required>
-                </div>
-                <br>
-                <div>
-                    <label for="email">Adresa de Email:</label><br>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <br>
-                <div>
-                    <label for="subiect">Subiect:</label><br>
-                    <input type="text" id="subiect" name="subiect" required>
-                </div>
-                <br>
-                <div>
-                    <label for="mesaj">Mesajul tau:</label><br>
-                    <textarea name="mesaj" id="mesaj" required></textarea>
-                </div>
-                <br>
-                <button type="submit">Trimite Mesajul</button>
-            </form>
+        <form action="#" method="POST">
+            <div>
+                <label for="nume">Numele tau:</label><br>
+                <input type="text" id="nume" name="nume" required>
+            </div>
+            <br>
+            <div>
+                <label for="email">Adresa de Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <br>
+            <div>
+                <label for="subiect">Subiect:</label><br>
+                <input type="text" id="subiect" name="subiect" required>
+            </div>
+            <br>
+            <div>
+                <label for="mesaj">Mesajul tau:</label><br>
+                <textarea name="mesaj" id="mesaj" rows="5" required></textarea>
+            </div>
+            <br>
+            <button type="submit">Trimite Mesajul</button>
+        </form>
 
-            <hr>
+        <hr>
 
-            <h3>Alte date de contact:</h3>
-            <p><strong>Telefon:</strong> 0722 123 456</p>
-            <p><strong>Email:</strong> info@scoala-dans.ro</p>
-            <p><strong>Adresa:</strong> Str. Mihai Eminescu, nr. 123, Craiova</p>
-        </section>      
-    </main>
+        <h3>Alte date de contact:</h3>
+        <p><strong>Telefon:</strong> 0722 123 456</p>
+        <p><strong>Email:</strong> info@scoala-dans.ro</p>
+        <p><strong>Adresa:</strong> Str. Mihai Eminescu, nr. 123, Craiova</p>
+    </section>      
+</main>
 
-    <footer>
-        <p>&copy; 2026 Scoala de dans "Ritm si Pasiune". Toate drepturile rezervate.</p>
-    </footer>
-</html>
+<?php
+// Incarcam subsolul modular
+include 'footer.php';
+?>
