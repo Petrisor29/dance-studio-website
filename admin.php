@@ -68,6 +68,13 @@ require_once 'controllers/EvenimentController.php';
             ?>
         </div>
     </div>
+    <div class="admin-body">
+            <?php
+            // ... (aici ramane blocul switch intact) ...
+            ?>
+        </div>
+    </div>
 
+    <script src="assets/js/validare_admin.js"></script>
 </body>
 </html>
