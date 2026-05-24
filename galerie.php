@@ -1,43 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scoala de Dans | Galerie Foto</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
+<?php include 'header.php'; ?>
 
-    <header>
-        <h1>Scoala de Dans "Ritm si Pasiune"</h1>
-        <nav>
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="cursuri.php">Cursuri</a></li>
-                <li><a href="instructori.php">Instructorii</a></li>
-                <li><a href="evenimente.php">Evenimente</a></li>
-                <li><a href="galerie.php">Galerie</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <section>
-            <h2>Galerie Foto</h2>
-            <p>Cateva momente surprinse in timpul cursurilor si competitiilor noastre.</p>
+<main>
+    <section>
+        <h2>Galerie Foto</h2>
+        <p>Cateva momente surprinse in timpul cursurilor si competitiilor noastre.</p>
 
-            <div>
-                <img src="https://picsum.photos/seed/dans1/300/200" alt="Cursanti dansand salsa in sala">
-                <img src="https://picsum.photos/seed/dans2/300/200" alt="Pereche executand un tango">
-                <img src="https://picsum.photos/seed/dans3/300/200" alt="Grup de copii la cursul de hip-hop">
-                <img src="https://picsum.photos/seed/dans4/300/200" alt="Instructor explicand un pas de dans">
-            </div>
-        </section>
-    </main>
+        <div class="galerie-grid">
+            <img src="assets/img/dans1.jpg" alt="Cursanti dansand salsa in sala">
+            <img src="assets/img/dans2.jpg" alt="Pereche executand un tango">
+            <img src="assets/img/dans3.jpg" alt="Grup de copii la cursul de hip-hop">
+            <img src="assets/img/dans4.jpg" alt="Instructor explicand un pas de dans">
+        </div>
+    </section>
+</main>
 
-    <footer>
-        <p>&copy; 2026 Scoala de dans "Ritm si Pasiune". Toate drepturile rezervate.</p>
-    </footer>
-</body>
-</html>
+<?php include 'footer.php'; ?>
