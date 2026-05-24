@@ -1,37 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scoala de dans | Home</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
+<?php
+// Incarcam antetul modular
+include 'header.php';
+?>
 
-    <header>
-        <h1>Scoala de dans "Ritm si Pasiune"</h1>
-        <nav>
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="cursuri.php">Cursuri</a></li>
-                <li><a href="instructori.php">Instructorii</a></li>
-                <li><a href="evenimente.php">Evenimente</a></li>
-                <li><a href="galerie.php">Galerie</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<main>
+    <section>
+        <h2>Bine ati venit!</h2>
+        <p>Descopera bucuria dansului alaturi de noi. Scoala noastra ofera cursuri pentru toate varstele si nivelurile de experienta, de la incepatori la profesionisti.</p>
+        <p>Misiunea noastra este sa cream un mediu prietenos si plin de energie, unde fiecare cursant se poate exprima liber prin miscare.</p>
+    </section>
+</main>
 
-    <main>
-        <section>
-            <h2>Bine ati venit!</h2>
-            <p>Descoperă bucuria dansului alături de noi. Școala noastră oferă cursuri pentru toate vârstele și nivelurile de experiență, de la începători la profesioniști.</p>
-            <p>Misiunea noastră este să creăm un mediu prietenos și plin de energie, unde fiecare cursant se poate exprima liber prin mișcare.</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Scoala de dans "Ritm si Pasiune". Toate drepturile rezervate.</p>
-    </footer>
-</body>
-</html>
+<?php
+// Incarcam subsolul modular
+include 'footer.php';
+?>
