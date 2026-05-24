@@ -50,6 +50,7 @@ require 'db_connect.php';
         <div class="admin-content">
             <?php
             // SISTEMUL DE RUTARE (ROUTER)
+            // SISTEMUL DE RUTARE (ROUTER)
             $sectiune = isset($_GET['sectiune']) ? $_GET['sectiune'] : 'dashboard';
 
             // Verificam ce buton s-a apasat in meniu si incarcam modulul corespunzator
@@ -58,12 +59,10 @@ require 'db_connect.php';
                     include 'admin_modules/instructori.php';
                     break;
                 case 'cursuri':
-                    // include 'admin_modules/cursuri.php';
-                    echo "<h3>Modulul Cursuri va fi incarcat aici.</h3>";
+                    include 'admin_modules/cursuri.php'; // Am activat includerea!
                     break;
                 case 'evenimente':
-                    // include 'admin_modules/evenimente.php';
-                    echo "<h3>Modulul Evenimente va fi incarcat aici.</h3>";
+                    include 'admin_modules/evenimente.php';
                     break;
                 case 'dashboard':
                 default:
