@@ -1,63 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scoala de Dans | Evenimente</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
+<?php
+// 1. Includem conexiunea
+require_once 'db_connect.php';
 
-    <header>
-        <h1>Scoala de Dans "Ritm si Pasiune"</h1>
-        <nav>
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="cursuri.php">Cursuri</a></li>
-                <li><a href="instructori.php">Instructorii</a></li>
-                <li><a href="evenimente.php">Evenimente</a></li>
-                <li><a href="galerie.php">Galerie</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+// 2. Incarcam antetul modular
+include 'header.php';
+?>
 
-    <main>
-        <section>
-            <h2>Evenimente si Competitii</h2>
-            <p>Aici gasesti calendarul evenimentelor noastre viitoare, atat petreceri interne cat si competitii nationale.</p>
+<main>
+    <section>
+        <h2>Evenimente si Competitii</h2>
+        <p>Aici gasesti calendarul evenimentelor noastre viitoare, atat petreceri interne cat si competitii nationale.</p>
 
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Nume Eveniment</th>
-                        <th>Locatie</th>
-                        <th>Tip Eveniment</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>15 Martie 2026</td>
-                        <td>Petrecere de Primavara</td>
-                        <td>Sala de Dans</td>
-                        <td>Petrecere Sociala</td>
-                    </tr>
-                    <tr>
-                        <td>10 Aprilie 2026</td>
-                        <td>Competitia Regionala de Salsa</td>
-                        <td>Teatrul Municipal</td>
-                        <td>Competitie</td>
-                    </tr>
-                </tbody>
+        <table border="1" style="width: 100%; text-align: left; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="padding: 10px;">Data</th>
+                    <th style="padding: 10px;">Nume Eveniment</th>
+                    <th style="padding: 10px;">Locatie</th>
+                    <th style="padding: 10px;">Tip Eveniment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // 3. Extragem evenimentele din baza de date
+                // Folosim ASC pentru a afisa evenimentele in ordinea in care au fost adaugate (sau poti folosi id DESC)
+                $sql = "SELECT data_eveniment, nume, locatie, tip FROM evenimente ORDER BY id ASC";
+                $result = mysqli_query($conn, $sql);
 
-            </table>
-        </section>
-    </main>
+                if ($result && mysqli_num_rows($result) > 0) {
+                    // 4. Generam randurile tabelului dinamic
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td style='padding: 10px;'>" . htmlspecialchars($row['data_eveniment']) . "</td>";
+                        echo "<td style='padding: 10px;'>" . htmlspecialchars($row['nume']) . "</td>";
+                        echo "<td style='padding: 10px;'>" . htmlspecialchars($row['locatie']) . "</td>";
+                        echo "<td style='padding: 10px;'>" . htmlspecialchars($row['tip']) . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    // Daca nu sunt evenimente, afisam un rand care se intinde pe toate cele 4 coloane (colspan="4")
+                    echo "<tr><td colspan='4' style='padding: 15px; text-align: center; color: #666; font-style: italic;'>Momentan nu sunt evenimente programate.</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </section>
+</main>
 
-    <footer>
-        <p>&copy; 2026 Scoala de dans "Ritm si Pasiune". Toate drepturile rezervate.</p>
-    </footer>
-    
-</body>
-</html>
+<?php
+// 5. Incarcam subsolul modular
+include 'footer.php';
+?>
