@@ -9,7 +9,7 @@ class InstructorController {
     }
 
     public function index() {
-        $mesaj = "";
+        $mesaj = ""; //Initializam un mesaj gol
         $mod_editare = false;
         $inst_edit = null;
 

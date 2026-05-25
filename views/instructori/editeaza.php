@@ -13,7 +13,7 @@
         
         <label>Nume Instructor:</label><br>
         <input type="text" name="nume" value="<?php echo htmlspecialchars($inst_edit['nume']); ?>" required style="width:100%; padding:8px; margin-top:5px;"><br><br>
-        
+
         <label>Specializare:</label><br>
         <input type="text" name="specializare" value="<?php echo htmlspecialchars($inst_edit['specializare']); ?>" required style="width:100%; padding:8px; margin-top:5px;"><br><br>
         
